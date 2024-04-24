@@ -6,6 +6,9 @@ use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Carbon;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ */
 class ProductFactory extends Factory
 {
     protected $model = Product::class;
@@ -19,7 +22,7 @@ class ProductFactory extends Factory
             'slug' => $this->faker->slug(),
             'description' => $this->faker->text(),
             'price' => $this->faker->numberBetween(1500, 6000),
-            'image' => $this->faker->imageUrl(640, 480, 'animals')
+            'image' => $this->faker->imageUrl(640, 480, 'animals'),
         ];
     }
 }
