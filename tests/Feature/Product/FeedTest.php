@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Livewire\Product\Index;
 use App\Models\User;
 
 test('guest', function () {
@@ -15,7 +16,17 @@ test('auth', function () {
 
     $response = $this->actingAs($user)->get(route('products.index'));
 
-    $response->assertStatus(200)
-    ->assertViewIs('product.index')
-    ->assertSee('Products');
+    $response->assertOk()
+        ->assertViewIs('product.index')
+        ->assertSee('Products');
+});
+
+test('products', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->get(route('products.index'));
+
+    $response->assertOk()
+        ->assertSee('Products')
+        ->assertSeeLivewire(Index::class);
 });
