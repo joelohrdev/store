@@ -6,9 +6,9 @@ use App\Livewire\Product\Index;
 use App\Models\User;
 
 test('guest', function () {
-   $response = $this->get(route('products.index'));
+    $response = $this->get(route('products.index'));
 
-   $response->assertRedirect(route('login'));
+    $response->assertRedirect(route('login'));
 });
 
 test('auth', function () {

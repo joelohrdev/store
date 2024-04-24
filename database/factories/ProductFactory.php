@@ -18,6 +18,7 @@ class ProductFactory extends Factory
         return [
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'uuid' => \Illuminate\Support\Str::uuid(),
             'name' => $this->faker->word(),
             'slug' => $this->faker->slug(),
             'description' => $this->faker->text(),

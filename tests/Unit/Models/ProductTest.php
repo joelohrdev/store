@@ -9,6 +9,7 @@ test('to array', function () {
 
     expect(array_keys($product->toArray()))->toBe([
         'id',
+        'uuid',
         'name',
         'slug',
         'description',

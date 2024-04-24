@@ -3,7 +3,7 @@
         <div class="overflow-x-auto">
             <div class="inline-block min-w-full">
                 <div class="overflow-hidden border rounded-lg">
-                    <table class="min-w-full divide-y divide-neutral-200">
+                    <table class="min-w-full divide-y divide-neutral-200 bg-white">
                         <thead class="bg-neutral-50">
                         <tr class="text-neutral-500">
                             <th class="px-5 py-3 text-xs font-medium text-left uppercase">Name</th>
@@ -21,5 +21,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="mt-4">
+        {{ $products->links() }}
     </div>
 </div>
