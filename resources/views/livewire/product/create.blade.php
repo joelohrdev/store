@@ -18,7 +18,12 @@
                 </div>
                 <div>
                     <x-input-label for="price" :value="__('Product Price')" />
-                    <x-text-input wire:model="price" id="create_product_price" name="price" type="text" class="mt-1 block w-full" autocomplete="price" />
+                    <div class="relative mt-1 rounded-md shadow-sm">
+                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                            <span class="text-gray-500 sm:text-sm">$</span>
+                        </div>
+                        <input type="text" wire:model="price" name="price" id="price" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-12 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="0.00" aria-describedby="price-currency">
+                    </div>
                     <x-input-error :messages="$errors->get('price')" class="mt-2" />
                 </div>
                 <div>
@@ -48,3 +53,7 @@
     </div>
 
 </div>
+
+@assets
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"></script>
+@endassets

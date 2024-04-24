@@ -34,7 +34,7 @@ class Create extends Component
             $product = Product::create([
                 'name' => $this->name,
                 'description' => $this->description,
-                'price' => $this->price,
+                'price' => $this->price * 100,
                 'image' => $image,
             ]);
 

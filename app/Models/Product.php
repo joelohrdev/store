@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -24,7 +25,7 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'price' => 'float',
+        'price' => 'integer',
     ];
 
     public function user(): BelongsTo
@@ -45,8 +46,8 @@ class Product extends Model
         });
     }
 
-    public function getPriceAttribute(): string
+    public function getFormattedPriceAttribute(): string
     {
-        return Number::currency($this->attributes['price']);
+        return number_format($this->price / 100, 2);
     }
 }
