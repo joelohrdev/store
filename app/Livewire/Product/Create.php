@@ -3,6 +3,7 @@
 namespace App\Livewire\Product;
 
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -27,10 +28,10 @@ class Create extends Component
 
         try {
             $product = Product::create([
-                'name' => $this->pull('name'),
-                'description' => $this->pull('description'),
-                'price' => $this->pull('price'),
-//            'image' => $this->pull('image')->store('products'),
+                'name' => $this->name,
+                'description' => $this->description,
+                'price' => $this->price,
+                'image' => $this->image->store('products', 'public'),
             ]);
 
             session()->flash('flash.type', 'success');
