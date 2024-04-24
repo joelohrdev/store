@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Number;
 
 class Product extends Model
 {
@@ -17,4 +18,9 @@ class Product extends Model
         'price',
         'image',
     ];
+
+    public function getPriceAttribute(): string
+    {
+        return Number::currency($this->attributes['price']);
+    }
 }
