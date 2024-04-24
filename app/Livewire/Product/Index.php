@@ -11,6 +11,15 @@ class Index extends Component
 {
     use WithPagination;
 
+    public function placeholder()
+    {
+        return <<<'HTML'
+        <div>
+            Loading...
+        </div>
+        HTML;
+    }
+
     public function render(): View
     {
         return view('livewire.product.index', [
