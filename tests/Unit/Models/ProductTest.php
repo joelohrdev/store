@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Models\Product;
+
+test('to product array', function () {
+    $product = Product::factory()->create()->fresh();
+
+    expect(array_keys($product->toArray()))->toBe([
+        'id',
+        'name',
+        'slug',
+        'description',
+        'price',
+        'image',
+        'deleted_at',
+        'created_at',
+        'updated_at',
+    ]);
+});
