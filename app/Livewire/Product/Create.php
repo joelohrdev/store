@@ -25,12 +25,26 @@ class Create extends Component
     {
         $this->validate();
 
-        Product::create([
-            'name' => $this->pull('name'),
-            'description' => $this->pull('description'),
-            'price' => $this->pull('price'),
+        try {
+            $product = Product::create([
+                'name' => $this->pull('name'),
+                'description' => $this->pull('description'),
+                'price' => $this->pull('price'),
 //            'image' => $this->pull('image')->store('products'),
-        ]);
+            ]);
+
+            session()->flash('flash.type', 'success');
+            session()->flash('flash.title', $this->name . ' Created');
+            session()->flash('flash.message', 'Product has been successfully created.');
+
+            return redirect()->route('products.show', $product);
+        } catch (\Exception $e) {
+            $this->addError('name', $e->getMessage());
+
+            session()->flash('flash.type', 'error');
+            session()->flash('flash.title', 'Product Creation Failed');
+            session()->flash('flash.message', 'There was an error creating the product.');
+        }
     }
     public function render(): View
     {
